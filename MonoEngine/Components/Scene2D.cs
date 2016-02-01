@@ -9,33 +9,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoEngine.Components
 {
-    public class Scene2D : GameObject
+    public class Scene2D : SceneEngine
     {
-        private RenderService renderService;
-
         public Scene2D(Game game, Vector2 baseScreenSize)
-            : base(game)
+            : base(game, baseScreenSize)
         {
-            this.renderService = new RenderService(game.GraphicsDevice, new SpriteBatch(game.GraphicsDevice), baseScreenSize);
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            foreach (var child in this.Children)
-            {
-                child.Update(gameTime);
-            }
-        }
-
-        public void Draw(GameTime gameTime)
-        {
-            renderService.BeginDraw();
-            foreach (var child in this.Children)
-            {
-                child.Draw(renderService, gameTime);
-            }
-            renderService.EndDraw();
-        }
 
         public override void Draw(IRenderService renderService, GameTime gameTime)
         {

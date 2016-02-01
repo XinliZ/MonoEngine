@@ -7,13 +7,24 @@ using System.Threading.Tasks;
 
 namespace MonoEngine.Components
 {
-    public abstract class GameLevel<T> : GameSession<T>
+    public class GameLevel<T> : GameSession<T>
     {
-        public List<Scene2D> Scenes = new List<Scene2D>();
+        public List<SceneEngine> Scenes = new List<SceneEngine>();
 
         public GameLevel(Game game)
             : base(game)
         {
+        }
+
+        public GameLevel(Game game, params SceneEngine[] scenes)
+            : base(game)
+        {
+            this.Scenes.AddRange(scenes);
+        }
+
+        public static GameLevel<object> CreateLevelFromScene(Game game, SceneEngine scene)
+        {
+            return new GameLevel<object>(game, scene);
         }
 
         public override void Update(GameTime gameTime)

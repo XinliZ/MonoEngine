@@ -8,28 +8,17 @@ using MonoEngine.Graphics;
 
 namespace MonoEngine.Components
 {
-    public class Scene3D : GameObject
+    public class Scene3D : SceneEngine
     {
-        public Scene3D(Game game)
-            : base(game)
+        public Scene3D(Game game, Vector2 baseScreenSize)
+            : base(game, baseScreenSize)
         {
 
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            foreach (var child in this.Children)
-            {
-                child.Update(gameTime);
-            }
         }
 
         public override void Draw(IRenderService renderService, GameTime gameTime)
         {
-            foreach (var child in this.Children)
-            {
-                child.Draw(renderService, gameTime);
-            }
+            // Do nothing. Scene doesn't need to draw it's self
         }
     }
 }

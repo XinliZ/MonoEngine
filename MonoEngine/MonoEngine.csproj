@@ -114,6 +114,7 @@
     <Compile Include="Components\IRenderServce.cs" />
     <Compile Include="Components\LoadingPriority.cs" />
     <Compile Include="Components\Scene2D.cs" />
+    <Compile Include="Components\SceneEngine.cs" />
     <Compile Include="Graphics\Animation.cs" />
     <Compile Include="Graphics\IRenderService.cs" />
     <Compile Include="Graphics\RenderService.cs" />

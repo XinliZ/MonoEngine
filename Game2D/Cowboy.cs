@@ -23,11 +23,14 @@ namespace Game2D
         [Content("Sprites/Player/Run", ContentCategory.Shape)]
         Texture2D cowboyRun { get; set; }
 
-        Animation animationIdle;
-        Animation animationRun;
-        Animation animationJump;
-        Animation animationCelebrate;
-        Animation animationDie;
+        private Animation animationIdle;
+        private Animation animationRun;
+        private Animation animationJump;
+        private Animation animationCelebrate;
+        private Animation animationDie;
+
+        private int x;
+        private int y;
 
         public Cowboy(Game1 game)
             :base(game)
