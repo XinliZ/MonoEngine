@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using System.Threading;
 using MonoEngine.Graphics;
+using MonoEngine.Validators;
 
 namespace MonoEngine.Scheduling
 {
@@ -33,7 +34,7 @@ namespace MonoEngine.Scheduling
             }
             else
             {
-                var validator = checkValidators(validators);
+                var validator = checkValidators(validators, gameTime);
                 if (validator != null)
                 {
                     result = validator.TargetState;
@@ -42,11 +43,11 @@ namespace MonoEngine.Scheduling
             }
         }
 
-        private IConditionValidator<T> checkValidators(IConditionValidator<T>[] validators)
+        private IConditionValidator<T> checkValidators(IConditionValidator<T>[] validators, GameTime gameTime)
         {
             foreach (var validator in validators)
             {
-                if (validator.ConditionMeet())
+                if (validator.ConditionMeet(gameTime))
                 {
                     return validator;
                 }

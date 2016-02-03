@@ -127,17 +127,19 @@
     <Compile Include="Components\Scene3D.cs" />
     <Compile Include="Components\SplashScreen.cs" />
     <Compile Include="Graphics\SpriteRenderable.cs" />
+    <Compile Include="Numeric.cs" />
     <Compile Include="Scheduling\ForeverRunnable.cs" />
-    <Compile Include="Scheduling\IConditionValidator.cs" />
+    <Compile Include="Validators\IConditionValidator.cs" />
     <Compile Include="Scheduling\IGameRunner.cs" />
     <Compile Include="Scheduling\IPlayable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scheduling\IRunnable.cs" />
-    <Compile Include="Scheduling\KeyDownValidator.cs" />
-    <Compile Include="Scheduling\KeyUpValidator.cs" />
+    <Compile Include="Validators\KeyDownValidator.cs" />
+    <Compile Include="Validators\KeyUpValidator.cs" />
     <Compile Include="Scheduling\Runnable.cs" />
     <Compile Include="Scheduling\SpriteRunnable.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="Validators\TimingValidator.cs" />
     <EmbeddedResource Include="Properties\MonoEngine.rd.xml" />
   </ItemGroup>
   <ItemGroup />

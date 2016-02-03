@@ -1,11 +1,7 @@
-﻿using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
-namespace MonoEngine.Scheduling
+namespace MonoEngine.Validators
 {
     public class KeyDownValidator<T> : IConditionValidator<T>
     {
@@ -19,7 +15,7 @@ namespace MonoEngine.Scheduling
             this.TargetState = state;
         }
 
-        public bool ConditionMeet()
+        public bool ConditionMeet(GameTime gameTime)
         {
             var keyboard = Keyboard.GetState();
             return keyboard.IsKeyDown(this.key);
