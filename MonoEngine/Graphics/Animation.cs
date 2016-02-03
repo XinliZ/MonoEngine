@@ -26,7 +26,7 @@ namespace MonoEngine.Graphics
 
         private TimeSpan elapsedTime = TimeSpan.Zero;
 
-        public Animation(Texture2D texture, int repeatX, int repeatY, float frameTime, bool repeat)
+        public Animation(Texture2D texture, int repeatX, int repeatY, float frameTime, bool repeat, float extensionTimeInTheEnd = 0)
         {
             this.frameCount = repeatX * repeatY;
             this.texture = texture;

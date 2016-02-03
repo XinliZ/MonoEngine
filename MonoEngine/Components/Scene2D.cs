@@ -6,40 +6,25 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using MonoEngine.Graphics;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace MonoEngine.Components
 {
-    public class Scene2D : GameObject
+    public class Scene2D : SceneBase
     {
-        private RenderService renderService;
-
         public Scene2D(Game game, Vector2 baseScreenSize)
-            : base(game)
+            : base(game, baseScreenSize)
         {
-            this.renderService = new RenderService(game.GraphicsDevice, new SpriteBatch(game.GraphicsDevice), baseScreenSize);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void LoadResource(ContentManager contentManager)
         {
-            foreach (var child in this.Children)
-            {
-                child.Update(gameTime);
-            }
+            throw new NotImplementedException();
         }
 
-        public void Draw(GameTime gameTime)
+        public override void UnloadResource()
         {
-            renderService.BeginDraw();
-            foreach (var child in this.Children)
-            {
-                child.Draw(renderService, gameTime);
-            }
-            renderService.EndDraw();
-        }
-
-        public override void Draw(IRenderService renderService, GameTime gameTime)
-        {
-            // Do nothing. Scene doesn't need to draw it's self
+            throw new NotImplementedException();
         }
     }
 }

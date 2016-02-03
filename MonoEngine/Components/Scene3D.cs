@@ -5,31 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MonoEngine.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace MonoEngine.Components
 {
-    public class Scene3D : GameObject
+    public class Scene3D : SceneBase
     {
-        public Scene3D(Game game)
-            : base(game)
+        public Scene3D(Game game, Vector2 baseScreenSize)
+            : base(game, baseScreenSize)
         {
 
         }
 
-        public override void Update(GameTime gameTime)
+        public override void LoadResource(ContentManager contentManager)
         {
-            foreach (var child in this.Children)
-            {
-                child.Update(gameTime);
-            }
+            throw new NotImplementedException();
         }
 
-        public override void Draw(IRenderService renderService, GameTime gameTime)
+        public override void UnloadResource()
         {
-            foreach (var child in this.Children)
-            {
-                child.Draw(renderService, gameTime);
-            }
+            throw new NotImplementedException();
         }
     }
 }

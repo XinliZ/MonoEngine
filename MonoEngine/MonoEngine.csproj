@@ -114,19 +114,32 @@
     <Compile Include="Components\IRenderServce.cs" />
     <Compile Include="Components\LoadingPriority.cs" />
     <Compile Include="Components\Scene2D.cs" />
+    <Compile Include="Components\SceneBase.cs" />
     <Compile Include="Graphics\Animation.cs" />
+    <Compile Include="Graphics\IRenderable.cs" />
     <Compile Include="Graphics\IRenderService.cs" />
+    <Compile Include="Graphics\Renderable.cs" />
     <Compile Include="Graphics\RenderService.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Components\GameLevel.cs" />
+    <Compile Include="Components\GameRunner.cs" />
     <Compile Include="Components\GameUI.cs" />
     <Compile Include="Components\GameSession.cs" />
     <Compile Include="Components\Scene3D.cs" />
     <Compile Include="Components\SplashScreen.cs" />
-    <Compile Include="Scheduling\IConditionValidator.cs" />
+    <Compile Include="Graphics\SpriteRenderable.cs" />
+    <Compile Include="Numeric.cs" />
+    <Compile Include="Scheduling\ForeverRunnable.cs" />
+    <Compile Include="Validators\IConditionValidator.cs" />
+    <Compile Include="Scheduling\IGameRunner.cs" />
     <Compile Include="Scheduling\IPlayable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduling\IRunnable.cs" />
+    <Compile Include="Validators\KeyDownValidator.cs" />
+    <Compile Include="Validators\KeyUpValidator.cs" />
+    <Compile Include="Scheduling\Runnable.cs" />
+    <Compile Include="Scheduling\SpriteRunnable.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="Validators\TimingValidator.cs" />
     <EmbeddedResource Include="Properties\MonoEngine.rd.xml" />
   </ItemGroup>
   <ItemGroup />
