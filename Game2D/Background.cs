@@ -10,7 +10,7 @@ using MonoEngine.Graphics;
 
 namespace Game2D
 {
-    class Background : GameObject
+    class Background : Renderable
     {
         [Content("Backgrounds/Layer0_0", ContentCategory.Background)]
         public Texture2D BackgroundLayer0 { get; set; }
@@ -20,14 +20,9 @@ namespace Game2D
         public Texture2D BackgroundLayer2 { get; set; }
 
         public Background(Game1 game)
-            :base(game)
+            : base(game)
         {
 
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            // Nothing to update for background
         }
 
         public override void Draw(IRenderService renderService, GameTime gameTime)

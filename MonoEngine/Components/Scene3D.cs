@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MonoEngine.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace MonoEngine.Components
 {
-    public class Scene3D : SceneEngine
+    public class Scene3D : SceneBase
     {
         public Scene3D(Game game, Vector2 baseScreenSize)
             : base(game, baseScreenSize)
@@ -16,9 +17,14 @@ namespace MonoEngine.Components
 
         }
 
-        public override void Draw(IRenderService renderService, GameTime gameTime)
+        public override void LoadResource(ContentManager contentManager)
         {
-            // Do nothing. Scene doesn't need to draw it's self
+            throw new NotImplementedException();
+        }
+
+        public override void UnloadResource()
+        {
+            throw new NotImplementedException();
         }
     }
 }

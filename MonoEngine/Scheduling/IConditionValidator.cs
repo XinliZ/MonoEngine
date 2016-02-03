@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonoEngine.Scheduling
 {
-    internal interface IConditionValidator<T>
+    public interface IConditionValidator<T>
     {
         bool ConditionMeet();
         T TargetState { get; }

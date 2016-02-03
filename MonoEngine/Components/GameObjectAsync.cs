@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using MonoEngine.Graphics;
 using System.Threading;
 using Microsoft.Xna.Framework.Input;
+using MonoEngine.Scheduling;
 
 namespace MonoEngine.Components
 {
@@ -20,10 +21,12 @@ namespace MonoEngine.Components
         private Keys currentKey;
         private bool onRelease;
 
-        public GameObjectAsync(Game game)
+        protected IGameRunner Runner;
+
+        public GameObjectAsync(Game game, IGameRunner runner)
             : base(game)
         {
-
+            this.Runner = runner;
         }
 
         public abstract Task Run();

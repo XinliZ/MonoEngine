@@ -3,6 +3,8 @@ using MonoEngine.Components;
 using MonoEngine.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Threading.Tasks;
+using MonoEngine.Scheduling;
+using Microsoft.Xna.Framework;
 
 namespace Game2D
 {
@@ -23,46 +25,64 @@ namespace Game2D
         [Content("Sprites/Player/Run", ContentCategory.Shape)]
         Texture2D cowboyRun { get; set; }
 
-        private Animation animationIdle;
-        private Animation animationRun;
-        private Animation animationJump;
-        private Animation animationCelebrate;
-        private Animation animationDie;
+        private SpriteRenderable animationIdle;
+        private SpriteRenderable animationWalk;
+        private SpriteRenderable animationJump;
+        private SpriteRenderable animationCelebrate;
+        private SpriteRenderable animationDie;
 
         private int x;
         private int y;
 
-        public Cowboy(Game1 game)
-            :base(game)
+        enum State
         {
-            animationIdle = new Animation(cowboyIdle, 1, 1, 1000, true);
-            animationRun = new Animation(cowboyRun, 10, 1, 50, true);
-            animationJump = new Animation(cowboyJump, 11, 1, 50, false);
-            animationCelebrate = new Animation(cowboyCelebrate, 11, 1, 50, false);
-            animationDie = new Animation(cowboyDie, 12, 1, 50, false);
+            Idle,
+            Walking,
+            Jumping,
+            Dying,
+            Died
+        }
+
+        public Cowboy(Game1 game, IGameRunner runner)
+            :base(game, runner)
+        {
+            animationIdle = new SpriteRenderable(game, cowboyIdle, 1, 1);
+            animationWalk = new SpriteRenderable(game, cowboyRun, 10, 1);
+            animationJump = new SpriteRenderable(game, cowboyJump, 11, 1);
+            animationCelebrate = new SpriteRenderable(game, cowboyCelebrate, 11, 1);
+            animationDie = new SpriteRenderable(game, cowboyDie, 12, 1);
         }
 
         public async override Task Run()
         {
+            State state = State.Idle;
+            float x = 200.0f;
+            float y = 200.0f;
+            float frame = 0.0f;
             while (true)
             {
-                var keyEvent = await Play(animationIdle, new Keys[] { Keys.Left, Keys.Right, Keys.Space, Keys.K });
-                if (keyEvent == Keys.Space)
+                if (state == State.Idle)
                 {
-                    await Play(animationJump, 1000);
-                    animationJump.Reset();
+                    state = await Runner.Play(animationIdle, 
+                        new Runnable<State>((gameTime) => { animationIdle.origin = new Vector2(x, y); return true; }, 
+                            new KeyDownValidator<State>(Keys.Left, State.Walking))
+                    );
                 }
-                else if (keyEvent == Keys.Left)
+                else if (state == State.Walking)
                 {
-                    keyEvent = await PlayUntil(animationRun, new Keys[] { Keys.Left });
+                    state = await Runner.Play(animationWalk, new Runnable<State>((gameTime) => 
+                    {
+                        x -= 1f;
+                        animationWalk.origin = new Vector2(x, y);
+                        frame += 0.2f;
+                        if (frame > 10.5f)
+                        {
+                            frame = 0.0f;
+                        }
+                        animationWalk.frame = (int)frame;
+                        return true;
+                    }, new KeyUpValidator<State>(Keys.Left, State.Idle)));
                 }
-                else if (keyEvent == Keys.K)
-                {
-                    await Play(animationDie, 2000);
-                    animationDie.Reset();
-                    return;
-                }
-
             }
         }
     }

@@ -6,20 +6,25 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using MonoEngine.Graphics;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace MonoEngine.Components
 {
-    public class Scene2D : SceneEngine
+    public class Scene2D : SceneBase
     {
         public Scene2D(Game game, Vector2 baseScreenSize)
             : base(game, baseScreenSize)
         {
         }
 
-
-        public override void Draw(IRenderService renderService, GameTime gameTime)
+        public override void LoadResource(ContentManager contentManager)
         {
-            // Do nothing. Scene doesn't need to draw it's self
+            throw new NotImplementedException();
+        }
+
+        public override void UnloadResource()
+        {
+            throw new NotImplementedException();
         }
     }
 }

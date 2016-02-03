@@ -7,13 +7,13 @@ namespace Game2D
         public Scene(Game1 game, Vector2 baseScreenSize)
             : base(game, baseScreenSize)
         {
-            var background = new Background(game);
-            this.Add(background);
+            //var background = new Background(game);
+            //this.Add(background);
 
-            var cowboy = new Cowboy(game);
-            this.Add(cowboy);
+            //var cowboy = new Cowboy(game);
+            //this.Add(cowboy);
 
-            var task = cowboy.Run();
+            //var task = cowboy.Run();
         }
     }
 }
